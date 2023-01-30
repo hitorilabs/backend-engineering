@@ -1,5 +1,4 @@
-# backend-engineering
-overview of backend engineering concepts
+# Backend Engineering Concepts
 
 Manage Digital Ocean Resources w/ Terraform
 ```sh
@@ -16,3 +15,5 @@ docker build --platform linux/amd64 -t registry.digitalocean.com/hitorilabs/fast
 
 docker push registry.digitalocean.com/hitorilabs/fastapi-server
 ```
+
+I'm 90% sure that DigitalOcean Terraform provider implementation is busted.
