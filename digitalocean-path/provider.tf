@@ -7,10 +7,25 @@ terraform {
   }
 }
 
-variable "do_token" {}
+# Define a variable so we can pass in our token
+variable "do_pat" {
+  type = string
+  description = "A token to authenticate with Doppler"
+}
+
+# Define a variable so we can pass in our token
+variable "main_vpc_id" {
+  type = string
+  description = "The ID of the main VPC"
+}
 
 provider "digitalocean" {
-  token = var.do_token
+  token = var.do_pat
+}
+
+resource "digitalocean_vpc" "hitorilabs-vpc" {
+  name     = "vpc-hitorilabs"
+  region   = "tor1"
 }
 
 resource "digitalocean_container_registry" "hitorilabs" {
@@ -57,4 +72,14 @@ resource "digitalocean_app" "demo" {
       }
     }
   }
+}
+
+resource "digitalocean_database_cluster" "hitorilabs-cluster" {
+  name       = "hitorilabs-cluster"
+  engine     = "mongodb"
+  version    = "4"
+  size       = "db-s-1vcpu-1gb"
+  region     = "tor1"
+  node_count = 1
+  private_network_uuid = var.main_vpc_id
 }
