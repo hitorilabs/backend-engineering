@@ -423,3 +423,4 @@ Cons
 
 - https://root-servers.org
 - https://www.cloudflare.com/en-ca/learning/cdn/glossary/anycast-network/
+- encryption - https://www.youtube.com/watch?v=_zyKvPvh808
